@@ -1,0 +1,434 @@
+/* Reset básico */
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 16px;
+  scroll-behavior: smooth;
+}
+
+ul,
+ol {
+  list-style: none;
+}
+
+button {
+  font: inherit;
+  border: none;
+  background: none;
+  cursor: pointer;
+}
+
+input,
+select {
+  font: inherit;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+:root {
+  --cor-primaria: #1d4ed8;
+  --cor-primaria-escura: #1e3a8a;
+  --cor-secundaria: #0ea5a4;
+
+  --cor-fundo: #f3f4f6;
+  --cor-superficie: #ffffff;
+  --cor-borda: #d1d5db;
+  --cor-texto: #1f2937;
+  --cor-texto-suave: #6b7280;
+
+  /* Cores de status da encomenda */
+  --cor-pendente: #d97706;
+  --cor-pendente-bg: #fef3c7;
+  --cor-transito: #2563eb;
+  --cor-transito-bg: #dbeafe;
+  --cor-entregue: #16a34a;
+  --cor-entregue-bg: #dcfce7;
+
+  --cor-erro: #dc2626;
+  --cor-erro-bg: #fee2e2;
+  --cor-carregando: #0369a1;
+
+  /* Cores por modalidade de envio */
+  --cor-economica: #16a34a;
+  --cor-padrao: #2563eb;
+  --cor-expressa: #ea580c;
+
+  --espaco-xs: 0.5rem;
+  --espaco-sm: 0.75rem;
+  --espaco-md: 1.25rem;
+  --espaco-lg: 2rem;
+  --raio-borda: 10px;
+  --sombra-card: 0 2px 8px rgba(0, 0, 0, 0.08);
+
+  /* Fonte do próprio sistema, sem CDN externa */
+  --fonte-base: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    Helvetica, Arial, sans-serif;
+}
+
+body {
+  font-family: var(--fonte-base);
+  background-color: var(--cor-fundo);
+  color: var(--cor-texto);
+  line-height: 1.5;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.cabecalho {
+  background: linear-gradient(135deg, var(--cor-primaria), var(--cor-primaria-escura));
+  color: #fff;
+  padding: var(--espaco-lg) var(--espaco-md);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--espaco-xs);
+  text-align: center;
+}
+
+.cabecalho h1 {
+  font-size: 1.8rem;
+  letter-spacing: 0.5px;
+}
+
+.subtitulo {
+  font-size: 0.95rem;
+  opacity: 0.9;
+}
+
+.conteudo-principal {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: var(--espaco-lg);
+  padding: var(--espaco-lg) var(--espaco-md);
+  max-width: 1200px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+section {
+  background-color: var(--cor-superficie);
+  border-radius: var(--raio-borda);
+  padding: var(--espaco-md);
+  box-shadow: var(--sombra-card);
+}
+
+section h2 {
+  margin-bottom: var(--espaco-md);
+  color: var(--cor-primaria-escura);
+  font-size: 1.25rem;
+  border-bottom: 2px solid var(--cor-fundo);
+  padding-bottom: var(--espaco-xs);
+}
+
+.formulario {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--espaco-md);
+}
+
+.campo {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  flex: 1 1 220px;
+}
+
+.campo label {
+  font-weight: 600;
+  font-size: 0.9rem;
+  color: var(--cor-texto);
+}
+
+.campo input,
+.campo select {
+  padding: 0.6rem 0.75rem;
+  border: 1px solid var(--cor-borda);
+  border-radius: 8px;
+  background-color: var(--cor-superficie);
+  color: var(--cor-texto);
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.campo input:focus,
+.campo select:focus {
+  outline: none;
+  border-color: var(--cor-primaria);
+  box-shadow: 0 0 0 3px rgba(29, 78, 216, 0.15);
+}
+
+.campo input:read-only {
+  background-color: var(--cor-fundo);
+  color: var(--cor-texto-suave);
+}
+
+.campo-botao {
+  flex: 1 1 100%;
+  align-items: flex-end;
+}
+
+.botao {
+  padding: 0.7rem 1.4rem;
+  border-radius: 8px;
+  font-weight: 600;
+  transition: transform 0.1s ease, background-color 0.2s ease;
+}
+
+.botao-primario {
+  background-color: var(--cor-primaria);
+  color: #fff;
+}
+
+.botao-primario:hover {
+  background-color: var(--cor-primaria-escura);
+}
+
+.botao-primario:active {
+  transform: scale(0.98);
+}
+
+.mensagem-status {
+  font-size: 0.85rem;
+  color: var(--cor-carregando);
+  min-height: 1.1rem;
+}
+
+.mensagem-erro {
+  flex: 1 1 100%;
+  font-size: 0.9rem;
+  color: var(--cor-erro);
+  min-height: 1.2rem;
+}
+
+.mensagem-erro:not(:empty) {
+  background-color: var(--cor-erro-bg);
+  border: 1px solid var(--cor-erro);
+  border-radius: 8px;
+  padding: var(--espaco-sm);
+}
+
+.grade-indicadores {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--espaco-sm);
+}
+
+.indicador {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.25rem;
+  padding: var(--espaco-md);
+  border-radius: var(--raio-borda);
+  background-color: var(--cor-fundo);
+  text-align: center;
+}
+
+.indicador-valor {
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: var(--cor-primaria-escura);
+}
+
+.indicador-rotulo {
+  font-size: 0.8rem;
+  color: var(--cor-texto-suave);
+}
+
+.indicador--pendente .indicador-valor { color: var(--cor-pendente); }
+.indicador--transito .indicador-valor { color: var(--cor-transito); }
+.indicador--entregue .indicador-valor { color: var(--cor-entregue); }
+.indicador--faturamento {
+  background-color: var(--cor-primaria);
+}
+.indicador--faturamento .indicador-valor,
+.indicador--faturamento .indicador-rotulo {
+  color: #fff;
+}
+
+.grade-encomendas {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--espaco-md);
+}
+
+.mensagem-vazia {
+  color: var(--cor-texto-suave);
+  text-align: center;
+  padding: var(--espaco-lg) 0;
+}
+
+.card-encomenda {
+  display: flex;
+  flex-direction: column;
+  gap: var(--espaco-xs);
+  padding: var(--espaco-md);
+  border-radius: var(--raio-borda);
+  border: 1px solid var(--cor-borda);
+  border-left: 6px solid var(--cor-primaria);
+  background-color: var(--cor-superficie);
+  box-shadow: var(--sombra-card);
+}
+
+/* Cor por modalidade */
+.card--economica { border-left-color: var(--cor-economica); }
+.card--padrao { border-left-color: var(--cor-padrao); }
+.card--expressa { border-left-color: var(--cor-expressa); }
+
+.card-cabecalho {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.card-destinatario {
+  font-weight: 700;
+  font-size: 1.05rem;
+}
+
+.card-modalidade {
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  padding: 0.2rem 0.6rem;
+  border-radius: 999px;
+  color: #fff;
+}
+
+.card--economica .card-modalidade { background-color: var(--cor-economica); }
+.card--padrao .card-modalidade { background-color: var(--cor-padrao); }
+.card--expressa .card-modalidade { background-color: var(--cor-expressa); }
+
+.card-info {
+  font-size: 0.9rem;
+  color: var(--cor-texto-suave);
+}
+
+.card-frete {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--cor-primaria-escura);
+}
+
+.card-status {
+  display: inline-block;
+  align-self: flex-start;
+  font-size: 0.8rem;
+  font-weight: 600;
+  padding: 0.25rem 0.75rem;
+  border-radius: 999px;
+}
+
+.status-pendente {
+  color: var(--cor-pendente);
+  background-color: var(--cor-pendente-bg);
+}
+
+.status-em-transito {
+  color: var(--cor-transito);
+  background-color: var(--cor-transito-bg);
+}
+
+.status-entregue {
+  color: var(--cor-entregue);
+  background-color: var(--cor-entregue-bg);
+}
+
+.card-acoes {
+  display: flex;
+  gap: var(--espaco-sm);
+  margin-top: var(--espaco-xs);
+  flex-wrap: wrap;
+}
+
+.botao-avancar {
+  background-color: var(--cor-secundaria);
+  color: #fff;
+}
+
+.botao-avancar:hover {
+  background-color: #0b8a89;
+}
+
+.botao-avancar:disabled {
+  background-color: var(--cor-borda);
+  cursor: not-allowed;
+}
+
+.botao-excluir {
+  background-color: var(--cor-erro-bg);
+  color: var(--cor-erro);
+  border: 1px solid var(--cor-erro);
+}
+
+.botao-excluir:hover {
+  background-color: var(--cor-erro);
+  color: #fff;
+}
+
+.rodape {
+  text-align: center;
+  padding: var(--espaco-md);
+  font-size: 0.8rem;
+  color: var(--cor-texto-suave);
+  background-color: var(--cor-superficie);
+  border-top: 1px solid var(--cor-borda);
+}
+
+/* Celular: 1 coluna */
+@media (max-width: 480px) {
+  .cabecalho h1 {
+    font-size: 1.4rem;
+  }
+
+  .grade-indicadores {
+    grid-template-columns: 1fr;
+  }
+
+  .grade-encomendas {
+    grid-template-columns: 1fr;
+  }
+
+  .campo {
+    flex: 1 1 100%;
+  }
+}
+
+/* Tablet: 2 colunas */
+@media (min-width: 481px) and (max-width: 768px) {
+  .grade-indicadores {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .grade-encomendas {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Desktop: 3+ colunas */
+@media (min-width: 769px) {
+  .grade-indicadores {
+    grid-template-columns: repeat(5, 1fr);
+  }
+
+  .grade-encomendas {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .campo {
+    flex: 1 1 200px;
+  }
+}
