@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>RotaExpress - Gestão de Encomendas e Frete</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+  <header class="cabecalho">
+    <h1>RotaExpress</h1>
+    <p class="subtitulo">Sistema de Gestão de Encomendas e Frete</p>
+  </header>
+
+  <main class="conteudo-principal">
+
+    <!-- Formulário de cadastro -->
+    <section class="secao-cadastro" aria-labelledby="titulo-cadastro">
+      <h2 id="titulo-cadastro">Cadastrar nova encomenda</h2>
+
+      <form id="form-encomenda" class="formulario" novalidate>
+
+        <div class="campo">
+          <label for="destinatario">Destinatário</label>
+          <input type="text" id="destinatario" name="destinatario" placeholder="Nome completo do destinatário" required
+            minlength="3">
+        </div>
+
+        <!-- Ao sair deste campo, o JS busca o endereço na API ViaCEP -->
+        <div class="campo">
+          <label for="cep">CEP</label>
+          <input type="text" id="cep" name="cep" placeholder="Somente números, ex: 70000000" required pattern="\d{8}"
+            maxlength="8" inputmode="numeric">
+          <p id="status-cep" class="mensagem-status" aria-live="polite"></p>
+        </div>
+
+        <!-- Preenchidos automaticamente pela API -->
+        <div class="campo">
+          <label for="logradouro">Logradouro</label>
+          <input type="text" id="logradouro" name="logradouro" readonly placeholder="Preenchido automaticamente">
+        </div>
+
+        <div class="campo">
+          <label for="bairro">Bairro</label>
+          <input type="text" id="bairro" name="bairro" readonly placeholder="Preenchido automaticamente">
+        </div>
+
+        <div class="campo">
+          <label for="cidade">Cidade</label>
+          <input type="text" id="cidade" name="cidade" readonly placeholder="Preenchido automaticamente">
+        </div>
+
+        <div class="campo">
+          <label for="uf">UF</label>
+          <input type="text" id="uf" name="uf" readonly placeholder="UF">
+        </div>
+
+        <div class="campo">
+          <label for="numero">Número</label>
+          <input type="text" id="numero" name="numero" placeholder="Ex: 123" required>
+        </div>
+
+        <div class="campo">
+          <label for="peso">Peso (kg)</label>
+          <input type="number" id="peso" name="peso" placeholder="Ex: 2.5" required min="0.1" step="0.1">
+        </div>
+
+        <!-- Define o multiplicador do frete -->
+        <div class="campo">
+          <label for="modalidade">Modalidade</label>
+          <select id="modalidade" name="modalidade" required>
+            <option value="Econômica">Econômica</option>
+            <option value="Padrão" selected>Padrão</option>
+            <option value="Expressa">Expressa</option>
+          </select>
+        </div>
+
+        <div class="campo campo-botao">
+          <button type="submit" class="botao botao-primario">Cadastrar encomenda</button>
+        </div>
+
+        <p id="mensagem-erro" class="mensagem-erro" role="alert" aria-live="assertive"></p>
+      </form>
+    </section>
+
+    <!-- Contadores e faturamento -->
+    <section class="secao-indicadores" aria-labelledby="titulo-indicadores">
+      <h2 id="titulo-indicadores">Indicadores</h2>
+      <div class="grade-indicadores">
+        <article class="indicador">
+          <span class="indicador-valor" id="indicador-total">0</span>
+          <span class="indicador-rotulo">Total de encomendas</span>
+        </article>
+        <article class="indicador indicador--pendente">
+          <span class="indicador-valor" id="indicador-pendentes">0</span>
+          <span class="indicador-rotulo">Pendentes</span>
+        </article>
+        <article class="indicador indicador--transito">
+          <span class="indicador-valor" id="indicador-transito">0</span>
+          <span class="indicador-rotulo">Em trânsito</span>
+        </article>
+        <article class="indicador indicador--entregue">
+          <span class="indicador-valor" id="indicador-entregues">0</span>
+          <span class="indicador-rotulo">Entregues</span>
+        </article>
+        <article class="indicador indicador--faturamento">
+          <span class="indicador-valor" id="indicador-faturamento">R$ 0,00</span>
+          <span class="indicador-rotulo">Faturamento acumulado</span>
+        </article>
+      </div>
+    </section>
+
+    <!-- Os cards de encomenda são inseridos aqui via JavaScript -->
+    <section class="secao-lista" aria-labelledby="titulo-lista">
+      <h2 id="titulo-lista">Encomendas cadastradas</h2>
+      <div id="lista-encomendas" class="grade-encomendas"></div>
+    </section>
+
+  </main>
+
+  <footer class="rodape">
+    <p>RotaExpress &copy; 2026 - Projeto acadêmico CEUB | Disciplina: Desenvolvimento Web</p>
+    <p>Pedro Henrique Silva Sallorenzo - Matrícula: 22505884</p>
+  </footer>
+
+  <script src="js/script.js" defer></script>
+</body>
+
+</html>
