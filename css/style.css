@@ -69,7 +69,7 @@ a {
   --raio-borda: 10px;
   --sombra-card: 0 2px 8px rgba(0, 0, 0, 0.08);
 
-  /* Fonte do próprio sistema, sem CDN externa */
+  /* Fonte do próprio sistema */
   --fonte-base: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
     Helvetica, Arial, sans-serif;
 }
@@ -246,12 +246,22 @@ section h2 {
   color: var(--cor-texto-suave);
 }
 
-.indicador--pendente .indicador-valor { color: var(--cor-pendente); }
-.indicador--transito .indicador-valor { color: var(--cor-transito); }
-.indicador--entregue .indicador-valor { color: var(--cor-entregue); }
+.indicador--pendente .indicador-valor {
+  color: var(--cor-pendente);
+}
+
+.indicador--transito .indicador-valor {
+  color: var(--cor-transito);
+}
+
+.indicador--entregue .indicador-valor {
+  color: var(--cor-entregue);
+}
+
 .indicador--faturamento {
   background-color: var(--cor-primaria);
 }
+
 .indicador--faturamento .indicador-valor,
 .indicador--faturamento .indicador-rotulo {
   color: #fff;
@@ -282,9 +292,17 @@ section h2 {
 }
 
 /* Cor por modalidade */
-.card--economica { border-left-color: var(--cor-economica); }
-.card--padrao { border-left-color: var(--cor-padrao); }
-.card--expressa { border-left-color: var(--cor-expressa); }
+.card--economica {
+  border-left-color: var(--cor-economica);
+}
+
+.card--padrao {
+  border-left-color: var(--cor-padrao);
+}
+
+.card--expressa {
+  border-left-color: var(--cor-expressa);
+}
 
 .card-cabecalho {
   display: flex;
@@ -308,9 +326,17 @@ section h2 {
   color: #fff;
 }
 
-.card--economica .card-modalidade { background-color: var(--cor-economica); }
-.card--padrao .card-modalidade { background-color: var(--cor-padrao); }
-.card--expressa .card-modalidade { background-color: var(--cor-expressa); }
+.card--economica .card-modalidade {
+  background-color: var(--cor-economica);
+}
+
+.card--padrao .card-modalidade {
+  background-color: var(--cor-padrao);
+}
+
+.card--expressa .card-modalidade {
+  background-color: var(--cor-expressa);
+}
 
 .card-info {
   font-size: 0.9rem;
@@ -418,7 +444,7 @@ section h2 {
   }
 }
 
-/* Desktop: 3+ colunas */
+/* Computador: 3+ colunas */
 @media (min-width: 769px) {
   .grade-indicadores {
     grid-template-columns: repeat(5, 1fr);
