@@ -127,7 +127,7 @@ const gerenciador = new GerenciadorLogistica();
 
 const formulario = document.getElementById("form-encomenda");
 const campoCep = document.getElementById("cep");
-const campoLogradouro = document.getElementById("logradouro");
+const campoLogradouro = document.getElementById("endereco");
 const campoBairro = document.getElementById("bairro");
 const campoCidade = document.getElementById("cidade");
 const campoUf = document.getElementById("uf");
